@@ -28,26 +28,37 @@ public class GestionTableauxBord extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_retour_connexion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btn_gest_devis = new javax.swing.JButton();
+        btn_gest_clients = new javax.swing.JButton();
+        btn_gest_produits = new javax.swing.JButton();
+        btn_gest_factures = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(760, 425));
 
-        jButton1.setText("Retour");
+        btn_retour_connexion.setText("Retour");
+        btn_retour_connexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_retour_connexionActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("TABLEAU DE BORD");
 
-        jButton2.setText("DEVIS");
+        btn_gest_devis.setText("DEVIS");
 
-        jButton3.setText("CLIENTS");
+        btn_gest_clients.setText("CLIENTS");
+        btn_gest_clients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_gest_clientsActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("PRODUITS");
+        btn_gest_produits.setText("PRODUITS");
 
-        jButton5.setText("FACTURES");
+        btn_gest_factures.setText("FACTURES");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -57,19 +68,19 @@ public class GestionTableauxBord extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1))
+                        .addComponent(btn_retour_connexion))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(192, Short.MAX_VALUE))
+                        .addGap(308, 308, 308)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(215, 215, 215))
+                .addGap(0, 289, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_gest_devis, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_gest_factures, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_gest_produits, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_gest_clients, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(278, 278, 278))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,15 +88,15 @@ public class GestionTableauxBord extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
-                .addComponent(jButton3)
-                .addGap(27, 27, 27)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(29, 29, 29)
-                .addComponent(jButton2)
-                .addGap(3, 3, 3)
-                .addComponent(jButton1)
+                .addComponent(btn_gest_clients)
+                .addGap(18, 18, 18)
+                .addComponent(btn_gest_produits)
+                .addGap(28, 28, 28)
+                .addComponent(btn_gest_factures)
+                .addGap(18, 18, 18)
+                .addComponent(btn_gest_devis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(btn_retour_connexion)
                 .addContainerGap())
         );
 
@@ -107,7 +118,19 @@ public class GestionTableauxBord extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_retour_connexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retour_connexionActionPerformed
+        new GestionConnexion().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_retour_connexionActionPerformed
+
+    private void btn_gest_clientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gest_clientsActionPerformed
+        // TODO add your handling code here:
+        new GestionClients().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_gest_clientsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,11 +168,11 @@ public class GestionTableauxBord extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btn_gest_clients;
+    private javax.swing.JButton btn_gest_devis;
+    private javax.swing.JButton btn_gest_factures;
+    private javax.swing.JButton btn_gest_produits;
+    private javax.swing.JButton btn_retour_connexion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
