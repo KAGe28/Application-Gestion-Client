@@ -112,6 +112,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="DEVIS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_gest_devisActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_gest_clients">
           <Properties>
@@ -125,11 +128,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="PRODUITS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_gest_produitsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_gest_factures">
           <Properties>
             <Property name="text" type="java.lang.String" value="FACTURES"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_gest_facturesActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

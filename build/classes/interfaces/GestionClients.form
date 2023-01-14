@@ -385,6 +385,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_rechercher">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_rechercherKeyReleased"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <Properties>

@@ -48,6 +48,11 @@ public class GestionTableauxBord extends javax.swing.JFrame {
         jLabel1.setText("TABLEAU DE BORD");
 
         btn_gest_devis.setText("DEVIS");
+        btn_gest_devis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_gest_devisActionPerformed(evt);
+            }
+        });
 
         btn_gest_clients.setText("CLIENTS");
         btn_gest_clients.addActionListener(new java.awt.event.ActionListener() {
@@ -57,8 +62,18 @@ public class GestionTableauxBord extends javax.swing.JFrame {
         });
 
         btn_gest_produits.setText("PRODUITS");
+        btn_gest_produits.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_gest_produitsActionPerformed(evt);
+            }
+        });
 
         btn_gest_factures.setText("FACTURES");
+        btn_gest_factures.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_gest_facturesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,6 +146,24 @@ public class GestionTableauxBord extends javax.swing.JFrame {
         new GestionClients().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_gest_clientsActionPerformed
+
+    private void btn_gest_produitsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gest_produitsActionPerformed
+        // TODO add your handling code here:
+        new AccesInterdit().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_gest_produitsActionPerformed
+
+    private void btn_gest_facturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gest_facturesActionPerformed
+        // TODO add your handling code here:
+        new AccesInterdit().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_gest_facturesActionPerformed
+
+    private void btn_gest_devisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gest_devisActionPerformed
+        // TODO add your handling code here:
+        new AccesInterdit().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_gest_devisActionPerformed
 
     /**
      * @param args the command line arguments

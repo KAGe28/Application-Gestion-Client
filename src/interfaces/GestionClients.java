@@ -292,6 +292,12 @@ public class GestionClients extends javax.swing.JFrame {
             }
         });
 
+        txt_rechercher.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_rechercherKeyReleased(evt);
+            }
+        });
+
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         table_clients.setFont(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
@@ -423,17 +429,26 @@ public class GestionClients extends javax.swing.JFrame {
                 + "VALUES('" + nom + "','" + prenom + "','" + adresse + "','" + email + "','" + telephone + "','" + ville + "','" + fonction + "')";
 
         try {
-            stm = maconnexion.ObtenirConnexion().createStatement();
-            stm.executeUpdate(requete_ajout);
-            afficherClient();
-            JOptionPane.showMessageDialog(null, "Client ajouté avec succès");
-            txt_nom.setText("");
-            txt_prenom.setText("");
-            txt_adresse.setText("");
-            txt_email.setText("");
-            txt_telephone.setText("");
-            txt_fonction.setText("");
-            cb_ville.setSelectedItem("Brazzaville");
+            if (nom.equals("")
+                    || prenom.equals("")
+                    || adresse.equals("")
+                    || email.equals("")
+                    || telephone.equals("")
+                    || fonction.equals("")) {
+                JOptionPane.showMessageDialog(null, "Veuillez entrer tous les champs s'il vous plaît");
+            } else {
+                stm = maconnexion.ObtenirConnexion().createStatement();
+                stm.executeUpdate(requete_ajout);
+                afficherClient();
+                JOptionPane.showMessageDialog(null, "Client ajouté avec succès");
+                txt_nom.setText("");
+                txt_prenom.setText("");
+                txt_adresse.setText("");
+                txt_email.setText("");
+                txt_telephone.setText("");
+                txt_fonction.setText("");
+                cb_ville.setSelectedItem("Brazzaville");
+            }
 
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -458,7 +473,7 @@ public class GestionClients extends javax.swing.JFrame {
                     afficherClient();
                     viderChamps();
                     JOptionPane.showMessageDialog(null, "Client suppimé");
-                    afficherClient();
+                    // afficherClient();
                 } else {
                     JOptionPane.showMessageDialog(null, "veuillez remplir le champs id");
                 }
@@ -471,6 +486,15 @@ public class GestionClients extends javax.swing.JFrame {
 
     private void btn_afficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_afficherActionPerformed
         fichierVersEcran();
+        if (!txt_nom.getText().equals("")
+                || !txt_prenom.getText().equals("")
+                || !txt_adresse.getText().equals("")
+                || !txt_email.getText().equals("")
+                || !txt_telephone.getText().equals("")
+                || !txt_fonction.getText().equals("")) {
+            btn_ajouter.setEnabled(false);
+        }
+        
 
 
     }//GEN-LAST:event_btn_afficherActionPerformed
@@ -481,27 +505,39 @@ public class GestionClients extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             if (true) {
                 viderChamps();
+                btn_ajouter.setEnabled(true);
             }
 
         }
-
     }//GEN-LAST:event_btn_annulerActionPerformed
 
     private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
         // TODO add your handling code here:
         //Modifier les informations afficher
+
         int index = table_clients.getSelectedRow();
         try {
-            if (JOptionPane.showConfirmDialog(null, "Confirmer la modification", "Modification",
-                    JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-                stm.executeUpdate("UPDATE client SET nom='" + txt_nom.getText() + "',prenom='" + txt_prenom.getText()
-                        + "',adresse='" + txt_adresse.getText() + "',email='"
-                        + txt_email.getText() + "',telephone='" + txt_telephone.getText()
-                        + "',ville='" + cb_ville.getSelectedItem() + "',fonction='" + txt_fonction.getText()
-                        + "'where id= '" + liste_client().get(index).getId() + "'   ");
-                afficherClient();
-                viderChamps();
-                JOptionPane.showMessageDialog(null, "Modification effectuée avec succès");
+            if (txt_nom.getText().equals("")
+                    || txt_prenom.getText().equals("")
+                    || txt_adresse.getText().equals("")
+                    || txt_email.getText().equals("")
+                    || txt_telephone.getText().equals("")
+                    || txt_fonction.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Aucun client n'a été affiché pour procéder à la modifiaction");
+            } else {
+                btn_ajouter.setEnabled(false);
+                if (JOptionPane.showConfirmDialog(null, "Confirmer la modification", "Modification",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+                    stm.executeUpdate("UPDATE client SET nom='" + txt_nom.getText() + "',prenom='" + txt_prenom.getText()
+                            + "',adresse='" + txt_adresse.getText() + "',email='"
+                            + txt_email.getText() + "',telephone='" + txt_telephone.getText()
+                            + "',ville='" + cb_ville.getSelectedItem() + "',fonction='" + txt_fonction.getText()
+                            + "'where id= '" + liste_client().get(index).getId() + "'   ");
+                    afficherClient();
+                    viderChamps();
+                    btn_ajouter.setEnabled(true);
+                    JOptionPane.showMessageDialog(null, "Modification effectuée avec succès");
+                }
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "erreur de modification!!!!!");
@@ -538,6 +574,10 @@ public class GestionClients extends javax.swing.JFrame {
          */
     }//GEN-LAST:event_btn_rechercherActionPerformed
 
+    private void txt_rechercherKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rechercherKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_rechercherKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -552,16 +592,24 @@ public class GestionClients extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionClients.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionClients.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionClients.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionClients.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
