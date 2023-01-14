@@ -21,7 +21,8 @@ public class Client {
     
     public static int num;
 
-    public Client(String nom, String prenom, String adresse, String email, String telephone, String ville, String fonction) {
+    public Client(int id,String nom, String prenom, String adresse, String email, String telephone, String ville, String fonction) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
