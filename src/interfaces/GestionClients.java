@@ -7,9 +7,11 @@ package interfaces;
 
 import classes.Client;
 import classes.Connexion;
+import com.sun.xml.internal.bind.v2.schemagen.Util;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.*;
 
 /**
@@ -27,6 +29,8 @@ public class GestionClients extends javax.swing.JFrame {
     public GestionClients() {
         initComponents();
         afficherClient();
+
+        //DefaultTableModel model = new DefaultTableModel();
     }
 
     //Afficher les données de la table
@@ -68,16 +72,40 @@ public class GestionClients extends javax.swing.JFrame {
         }
 
     }
-    
+
     //Vider les champs
-    public void viderChamps(){
+    public void viderChamps() {
         txt_nom.setText("");
-                txt_prenom.setText("");
-                txt_adresse.setText("");
-                txt_email.setText("");
-                txt_telephone.setText("");
-                cb_ville.setSelectedItem("Brazzaville");
-                txt_fonction.setText("");
+        txt_prenom.setText("");
+        txt_adresse.setText("");
+        txt_email.setText("");
+        txt_telephone.setText("");
+        cb_ville.setSelectedItem("Brazzaville");
+        txt_fonction.setText("");
+    }
+
+    //Afficher les valeurs du tableau dans les champs
+    public void fichierVersEcran() {
+        //Afficher les informations sur le champ
+        //Faire référence à la ligne selectionnée
+        int index = table_clients.getSelectedRow();
+        //Définir les valeurs du tableau comme valeurs des champs de saisie
+        txt_nom.setText(liste_client().get(index).getNom());
+        txt_prenom.setText(liste_client().get(index).getPrenom());
+        txt_adresse.setText(liste_client().get(index).getAdresse());
+        txt_email.setText(liste_client().get(index).getEmail());
+        txt_telephone.setText(liste_client().get(index).getTelephone());
+        cb_ville.setSelectedItem(liste_client().get(index).getVille());
+        txt_fonction.setText(liste_client().get(index).getFonction());
+    }
+
+    //Fonction permettant de rechercher
+    public void rechercher(String str) {
+        DefaultTableModel model = new DefaultTableModel();
+        model = (DefaultTableModel) table_clients.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        table_clients.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(str));
     }
 
     /**
@@ -106,17 +134,16 @@ public class GestionClients extends javax.swing.JFrame {
         txt_telephone = new javax.swing.JTextField();
         txt_fonction = new javax.swing.JTextField();
         cb_ville = new javax.swing.JComboBox<>();
-        btn_recherche = new javax.swing.JButton();
+        btn_rechercher = new javax.swing.JButton();
         btn_ajouter = new javax.swing.JButton();
         btn_modifier = new javax.swing.JButton();
         btn_supprimer = new javax.swing.JButton();
         btn_afficher = new javax.swing.JButton();
         btn_annuler = new javax.swing.JButton();
         btn_retour_dashboard = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
+        txt_rechercher = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_clients = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -216,7 +243,12 @@ public class GestionClients extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btn_recherche.setText("Recherche");
+        btn_rechercher.setText("Recherche");
+        btn_rechercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_rechercherActionPerformed(evt);
+            }
+        });
 
         btn_ajouter.setText("Ajouter");
         btn_ajouter.addActionListener(new java.awt.event.ActionListener() {
@@ -226,6 +258,11 @@ public class GestionClients extends javax.swing.JFrame {
         });
 
         btn_modifier.setText("Modifier");
+        btn_modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modifierActionPerformed(evt);
+            }
+        });
 
         btn_supprimer.setText("Supprimer");
         btn_supprimer.addActionListener(new java.awt.event.ActionListener() {
@@ -284,8 +321,6 @@ public class GestionClients extends javax.swing.JFrame {
         table_clients.setRowHeight(20);
         jScrollPane1.setViewportView(table_clients);
 
-        jLabel9.setText("id");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -293,18 +328,16 @@ public class GestionClients extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(32, 32, 32)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btn_recherche)
+                                        .addComponent(btn_rechercher)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txt_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(btn_ajouter)
@@ -321,7 +354,7 @@ public class GestionClients extends javax.swing.JFrame {
                                                 .addGap(35, 35, 35)
                                                 .addComponent(btn_retour_dashboard))))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(178, 178, 178)
+                                .addGap(198, 198, 198)
                                 .addComponent(jLabel1)))
                         .addGap(0, 238, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -332,32 +365,27 @@ public class GestionClients extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btn_recherche)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btn_ajouter)
-                                    .addComponent(btn_modifier)
-                                    .addComponent(btn_supprimer))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btn_afficher)
-                                    .addComponent(btn_annuler)
-                                    .addComponent(btn_retour_dashboard)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel9)))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_rechercher)
+                            .addComponent(txt_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_ajouter)
+                            .addComponent(btn_modifier)
+                            .addComponent(btn_supprimer))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_afficher)
+                            .addComponent(btn_annuler)
+                            .addComponent(btn_retour_dashboard))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addGap(42, 42, 42))
@@ -430,8 +458,7 @@ public class GestionClients extends javax.swing.JFrame {
                     afficherClient();
                     viderChamps();
                     JOptionPane.showMessageDialog(null, "Client suppimé");
-                    //   stmtlListe.executeUpdate("DELETE from courrier where destinataire=" + 'txt_dest.getText());
-                    //   affiche();
+                    afficherClient();
                 } else {
                     JOptionPane.showMessageDialog(null, "veuillez remplir le champs id");
                 }
@@ -443,18 +470,7 @@ public class GestionClients extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_supprimerActionPerformed
 
     private void btn_afficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_afficherActionPerformed
-
-        //Afficher les informations sur le champ
-        //Faire référence à la ligne selectionnée
-        int index = table_clients.getSelectedRow();
-        //Définir les valeurs du tableau comme valeurs des champs de saisie
-        txt_nom.setText(liste_client().get(index).getNom());
-        txt_prenom.setText(liste_client().get(index).getPrenom());
-        txt_adresse.setText(liste_client().get(index).getAdresse());
-        txt_email.setText(liste_client().get(index).getEmail());
-        txt_telephone.setText(liste_client().get(index).getTelephone());
-        cb_ville.setSelectedItem(liste_client().get(index).getVille());
-        txt_fonction.setText(liste_client().get(index).getFonction());
+        fichierVersEcran();
 
 
     }//GEN-LAST:event_btn_afficherActionPerformed
@@ -467,11 +483,60 @@ public class GestionClients extends javax.swing.JFrame {
                 viderChamps();
             }
 
-        } else {
-
         }
 
     }//GEN-LAST:event_btn_annulerActionPerformed
+
+    private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
+        // TODO add your handling code here:
+        //Modifier les informations afficher
+        int index = table_clients.getSelectedRow();
+        try {
+            if (JOptionPane.showConfirmDialog(null, "Confirmer la modification", "Modification",
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+                stm.executeUpdate("UPDATE client SET nom='" + txt_nom.getText() + "',prenom='" + txt_prenom.getText()
+                        + "',adresse='" + txt_adresse.getText() + "',email='"
+                        + txt_email.getText() + "',telephone='" + txt_telephone.getText()
+                        + "',ville='" + cb_ville.getSelectedItem() + "',fonction='" + txt_fonction.getText()
+                        + "'where id= '" + liste_client().get(index).getId() + "'   ");
+                afficherClient();
+                viderChamps();
+                JOptionPane.showMessageDialog(null, "Modification effectuée avec succès");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "erreur de modification!!!!!");
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_btn_modifierActionPerformed
+
+    private void btn_rechercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rechercherActionPerformed
+        // TODO add your handling code here:
+        //Rechercher par nom
+        String zone_recherche = txt_rechercher.getText();
+        rechercher(zone_recherche);
+
+        /*
+        for (int i = 0; i < table_clients.getRowCount(); i++) {
+            if(table_clients.getValueAt(i, 0).equals(zone_recherche)) {
+                table_clients.setRowSelectionInterval(i, i);
+            }else if (table_clients.getValueAt(i, 1).equals(zone_recherche)) {
+                table_clients.setRowSelectionInterval(i, i);
+            }else if(table_clients.getValueAt(i, 2).equals(zone_recherche)) {
+                table_clients.setRowSelectionInterval(i, i);
+            } else if(table_clients.getValueAt(i, 3).equals(zone_recherche)) {
+                table_clients.setRowSelectionInterval(i, i);
+            } else if (table_clients.getValueAt(i, 4).equals(zone_recherche)) {
+                table_clients.setRowSelectionInterval(i, i);
+            } else if (table_clients.getValueAt(i, 5).equals(zone_recherche)) {
+                table_clients.setRowSelectionInterval(i, i);
+            }else if(table_clients.getValueAt(i, 6).equals(zone_recherche)) {
+                table_clients.setRowSelectionInterval(i, i);
+            }else if(table_clients.getValueAt(i, 7).equals(zone_recherche)) {
+                table_clients.setRowSelectionInterval(i, i);
+            }
+        }
+         */
+    }//GEN-LAST:event_btn_rechercherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -513,7 +578,7 @@ public class GestionClients extends javax.swing.JFrame {
     private javax.swing.JButton btn_ajouter;
     private javax.swing.JButton btn_annuler;
     private javax.swing.JButton btn_modifier;
-    private javax.swing.JButton btn_recherche;
+    private javax.swing.JButton btn_rechercher;
     private javax.swing.JButton btn_retour_dashboard;
     private javax.swing.JButton btn_supprimer;
     private javax.swing.JComboBox<String> cb_ville;
@@ -525,17 +590,16 @@ public class GestionClients extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTable table_clients;
     private javax.swing.JTextField txt_adresse;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_fonction;
     private javax.swing.JTextField txt_nom;
     private javax.swing.JTextField txt_prenom;
+    private javax.swing.JTextField txt_rechercher;
     private javax.swing.JTextField txt_telephone;
     // End of variables declaration//GEN-END:variables
 }
