@@ -45,6 +45,7 @@ public class GestionTableauxBord extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Open Sans ExtraBold", 1, 24)); // NOI18N
         jLabel1.setText("TABLEAU DE BORD");
 
         btn_gest_devis.setText("DEVIS");
@@ -80,29 +81,28 @@ public class GestionTableauxBord extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_retour_connexion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(308, 308, 308)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btn_retour_connexion)
+                .addContainerGap(658, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 289, Short.MAX_VALUE)
+                .addGap(0, 300, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_gest_devis, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_gest_factures, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_gest_produits, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_gest_clients, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(278, 278, 278))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(247, 247, 247))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(btn_gest_clients)
                 .addGap(18, 18, 18)
                 .addComponent(btn_gest_produits)
@@ -110,7 +110,7 @@ public class GestionTableauxBord extends javax.swing.JFrame {
                 .addComponent(btn_gest_factures)
                 .addGap(18, 18, 18)
                 .addComponent(btn_gest_devis)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addComponent(btn_retour_connexion)
                 .addContainerGap())
         );
@@ -137,30 +137,37 @@ public class GestionTableauxBord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_retour_connexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retour_connexionActionPerformed
+        //Revenir vers l'écran de connexion
         new GestionConnexion().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_retour_connexionActionPerformed
 
     private void btn_gest_clientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gest_clientsActionPerformed
         // TODO add your handling code here:
+        //Acceder à l'interface de gestion des clients
         new GestionClients().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_gest_clientsActionPerformed
 
     private void btn_gest_produitsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gest_produitsActionPerformed
         // TODO add your handling code here:
+        //Acceder à l'interface affichant un message d'interdiction d'accès
         new AccesInterdit().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_gest_produitsActionPerformed
 
     private void btn_gest_facturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gest_facturesActionPerformed
         // TODO add your handling code here:
+        //Acceder à l'interface affichant un message d'interdiction d'accès
+
         new AccesInterdit().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_gest_facturesActionPerformed
 
     private void btn_gest_devisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gest_devisActionPerformed
         // TODO add your handling code here:
+        //Acceder à l'interface affichant un message d'interdiction d'accès
+
         new AccesInterdit().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_gest_devisActionPerformed

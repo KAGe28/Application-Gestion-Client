@@ -7,7 +7,6 @@ package interfaces;
 
 import classes.Client;
 import classes.Connexion;
-import com.sun.xml.internal.bind.v2.schemagen.Util;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -28,12 +27,12 @@ public class GestionClients extends javax.swing.JFrame {
      */
     public GestionClients() {
         initComponents();
+        // afficherClient permet de rafraichir automatiquement le tableau contenant les clients
         afficherClient();
-
-        //DefaultTableModel model = new DefaultTableModel();
     }
 
     //Afficher les données de la table
+    //On crée une liste de tableau afin de stocker les clients
     public ArrayList<Client> liste_client() {
         ArrayList<Client> liste_client = new ArrayList<>();
         String requeteSelect = "SELECT * FROM client order by id";
@@ -74,6 +73,7 @@ public class GestionClients extends javax.swing.JFrame {
     }
 
     //Vider les champs
+    //Une methode qui permet de vider les champs et mettre les valeurs par défaut
     public void viderChamps() {
         txt_nom.setText("");
         txt_prenom.setText("");
@@ -85,6 +85,7 @@ public class GestionClients extends javax.swing.JFrame {
     }
 
     //Afficher les valeurs du tableau dans les champs
+    //La méthode fichierVersEcran servira d'afficher les informations pour le boutton afficher
     public void fichierVersEcran() {
         //Afficher les informations sur le champ
         //Faire référence à la ligne selectionnée
@@ -99,7 +100,7 @@ public class GestionClients extends javax.swing.JFrame {
         txt_fonction.setText(liste_client().get(index).getFonction());
     }
 
-    //Fonction permettant de rechercher
+    //Methode permettant de rechercher un client
     public void rechercher(String str) {
         DefaultTableModel model = new DefaultTableModel();
         model = (DefaultTableModel) table_clients.getModel();
@@ -146,28 +147,42 @@ public class GestionClients extends javax.swing.JFrame {
         table_clients = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1130, 562));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Open Sans Light", 1, 18)); // NOI18N
         jLabel1.setText("ENREGISTREMENT DES CLIENTS");
 
+        jPanel2.setBackground(new java.awt.Color(246, 246, 246));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(246, 246, 246), 1, true));
+
         jLabel2.setFont(new java.awt.Font("Open Sans Light", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(30, 30, 30));
         jLabel2.setText("NOM : ");
 
         jLabel3.setFont(new java.awt.Font("Open Sans Light", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("PRENOM : ");
 
         jLabel4.setFont(new java.awt.Font("Open Sans Light", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ADRESSE : ");
 
         jLabel5.setFont(new java.awt.Font("Open Sans Light", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("EMAIL : ");
 
         jLabel6.setFont(new java.awt.Font("Open Sans Light", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("TELEPHONE : ");
 
         jLabel7.setFont(new java.awt.Font("Open Sans Light", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("VILLE : ");
 
+        jLabel8.setFont(new java.awt.Font("Open Sans Light", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("FONCTION : ");
 
         cb_ville.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Brazzaville", "Pointe-Noire", "Bouenza", "Cuvette", "Cuvette-Ouest", "Lékoumou", "Likouala", "Niari", "Plateaux", "Pool", "Sangha", "Kouilou" }));
@@ -179,35 +194,23 @@ public class GestionClients extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_adresse, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_fonction)
-                            .addComponent(cb_ville, 0, 172, Short.MAX_VALUE))))
-                .addContainerGap())
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_email)
+                    .addComponent(txt_nom)
+                    .addComponent(txt_prenom)
+                    .addComponent(txt_adresse)
+                    .addComponent(txt_telephone)
+                    .addComponent(cb_ville, 0, 244, Short.MAX_VALUE)
+                    .addComponent(txt_fonction))
+                .addGap(107, 107, 107))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,16 +236,20 @@ public class GestionClients extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txt_telephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(cb_ville, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txt_fonction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(txt_fonction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jLabel8)
                 .addContainerGap())
         );
 
+        btn_rechercher.setBackground(new java.awt.Color(0, 128, 255));
+        btn_rechercher.setFont(new java.awt.Font("Open Sans SemiBold", 1, 14)); // NOI18N
+        btn_rechercher.setForeground(new java.awt.Color(255, 255, 255));
+        btn_rechercher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_search_more_25px.png"))); // NOI18N
         btn_rechercher.setText("Recherche");
         btn_rechercher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,6 +257,10 @@ public class GestionClients extends javax.swing.JFrame {
             }
         });
 
+        btn_ajouter.setBackground(new java.awt.Color(0, 156, 19));
+        btn_ajouter.setFont(new java.awt.Font("Open Sans SemiBold", 1, 12)); // NOI18N
+        btn_ajouter.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ajouter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_Plus_25px_2.png"))); // NOI18N
         btn_ajouter.setText("Ajouter");
         btn_ajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +268,10 @@ public class GestionClients extends javax.swing.JFrame {
             }
         });
 
+        btn_modifier.setBackground(new java.awt.Color(0, 156, 19));
+        btn_modifier.setFont(new java.awt.Font("Open Sans SemiBold", 1, 12)); // NOI18N
+        btn_modifier.setForeground(new java.awt.Color(255, 255, 255));
+        btn_modifier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_edit_25px.png"))); // NOI18N
         btn_modifier.setText("Modifier");
         btn_modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +279,10 @@ public class GestionClients extends javax.swing.JFrame {
             }
         });
 
+        btn_supprimer.setBackground(new java.awt.Color(255, 102, 102));
+        btn_supprimer.setFont(new java.awt.Font("Open Sans SemiBold", 1, 12)); // NOI18N
+        btn_supprimer.setForeground(new java.awt.Color(255, 255, 255));
+        btn_supprimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_remove_25px.png"))); // NOI18N
         btn_supprimer.setText("Supprimer");
         btn_supprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,6 +290,9 @@ public class GestionClients extends javax.swing.JFrame {
             }
         });
 
+        btn_afficher.setFont(new java.awt.Font("Open Sans SemiBold", 1, 12)); // NOI18N
+        btn_afficher.setForeground(new java.awt.Color(255, 255, 255));
+        btn_afficher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_eye_25px.png"))); // NOI18N
         btn_afficher.setText("Afficher");
         btn_afficher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,13 +300,20 @@ public class GestionClients extends javax.swing.JFrame {
             }
         });
 
+        btn_annuler.setBackground(java.awt.SystemColor.textHighlight);
+        btn_annuler.setFont(new java.awt.Font("Open Sans SemiBold", 1, 12)); // NOI18N
+        btn_annuler.setForeground(new java.awt.Color(0, 128, 255));
+        btn_annuler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_reset_25px.png"))); // NOI18N
         btn_annuler.setText("Annuler");
+        btn_annuler.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 128, 255), new java.awt.Color(204, 204, 204), new java.awt.Color(0, 128, 255), null));
         btn_annuler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_annulerActionPerformed(evt);
             }
         });
 
+        btn_retour_dashboard.setFont(new java.awt.Font("Open Sans SemiBold", 1, 12)); // NOI18N
+        btn_retour_dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_go_back_25px_1.png"))); // NOI18N
         btn_retour_dashboard.setText("Retour");
         btn_retour_dashboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,38 +363,35 @@ public class GestionClients extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btn_rechercher)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txt_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btn_ajouter)
-                                            .addComponent(btn_afficher))
-                                        .addGap(24, 24, 24)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(btn_annuler, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                            .addComponent(btn_modifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btn_supprimer))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addGap(35, 35, 35)
-                                                .addComponent(btn_retour_dashboard))))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(198, 198, 198)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 238, Short.MAX_VALUE))
+                        .addGap(206, 206, 206)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1)))
+                        .addGap(32, 32, 32)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btn_rechercher)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btn_ajouter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_afficher, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_annuler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_modifier, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_supprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_retour_dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(70, 70, 70))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -375,26 +401,26 @@ public class GestionClients extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_rechercher)
-                            .addComponent(txt_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_rechercher))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_ajouter)
-                            .addComponent(btn_modifier)
-                            .addComponent(btn_supprimer))
+                            .addComponent(btn_supprimer)
+                            .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_ajouter))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_afficher)
-                            .addComponent(btn_annuler)
-                            .addComponent(btn_retour_dashboard))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                .addGap(42, 42, 42))
+                            .addComponent(btn_retour_dashboard)
+                            .addComponent(btn_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -419,35 +445,42 @@ public class GestionClients extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ajouterActionPerformed
-        // TODO add your handling code here:
+        // Bouton permettant d'ajouter des clients
+        
+        //On déclare les variables qui auront comme valeur le texte situé dans le champ de texte
         String nom = txt_nom.getText(), prenom = txt_prenom.getText(),
                 adresse = txt_adresse.getText(), email = txt_email.getText(),
                 telephone = txt_telephone.getText(), fonction = txt_fonction.getText();
         String ville = (String) cb_ville.getSelectedItem();
 
+        //On défini la requete sql d'insertion
         String requete_ajout = "INSERT INTO client (nom, prenom, adresse, email, telephone, ville, fonction)"
                 + "VALUES('" + nom + "','" + prenom + "','" + adresse + "','" + email + "','" + telephone + "','" + ville + "','" + fonction + "')";
 
         try {
+            
+            //Si les champs sont vides, on ne peut pas inserer des données
             if (nom.equals("")
                     || prenom.equals("")
                     || adresse.equals("")
                     || email.equals("")
                     || telephone.equals("")
                     || fonction.equals("")) {
+                //On affiche alors un message
                 JOptionPane.showMessageDialog(null, "Veuillez entrer tous les champs s'il vous plaît");
             } else {
+                
+                //sinon on insert les données
                 stm = maconnexion.ObtenirConnexion().createStatement();
                 stm.executeUpdate(requete_ajout);
+                
+                //On met à jour automatiquement le tableau contenant les clients
                 afficherClient();
+                
+                //On affiche un message disant que le client a bien été ajouté
                 JOptionPane.showMessageDialog(null, "Client ajouté avec succès");
-                txt_nom.setText("");
-                txt_prenom.setText("");
-                txt_adresse.setText("");
-                txt_email.setText("");
-                txt_telephone.setText("");
-                txt_fonction.setText("");
-                cb_ville.setSelectedItem("Brazzaville");
+                //On vide les champs de saisie
+                viderChamps();
             }
 
         } catch (SQLException ex) {
@@ -457,12 +490,15 @@ public class GestionClients extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ajouterActionPerformed
 
     private void btn_retour_dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retour_dashboardActionPerformed
+       //Bouton permettant de revenir vers le tableau de bord
         new GestionTableauxBord().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_retour_dashboardActionPerformed
 
     private void btn_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_supprimerActionPerformed
-        // TODO add your handling code here:
+        // Bouton permettant de suppimer un client selectionné dans le tableau
+        
+        // On 
         int index = table_clients.getSelectedRow();
         try {
             if (JOptionPane.showConfirmDialog(null, "attention vous avez supprimer un client etes-vous sûr?", "Suppimer client",
@@ -550,28 +586,6 @@ public class GestionClients extends javax.swing.JFrame {
         //Rechercher par nom
         String zone_recherche = txt_rechercher.getText();
         rechercher(zone_recherche);
-
-        /*
-        for (int i = 0; i < table_clients.getRowCount(); i++) {
-            if(table_clients.getValueAt(i, 0).equals(zone_recherche)) {
-                table_clients.setRowSelectionInterval(i, i);
-            }else if (table_clients.getValueAt(i, 1).equals(zone_recherche)) {
-                table_clients.setRowSelectionInterval(i, i);
-            }else if(table_clients.getValueAt(i, 2).equals(zone_recherche)) {
-                table_clients.setRowSelectionInterval(i, i);
-            } else if(table_clients.getValueAt(i, 3).equals(zone_recherche)) {
-                table_clients.setRowSelectionInterval(i, i);
-            } else if (table_clients.getValueAt(i, 4).equals(zone_recherche)) {
-                table_clients.setRowSelectionInterval(i, i);
-            } else if (table_clients.getValueAt(i, 5).equals(zone_recherche)) {
-                table_clients.setRowSelectionInterval(i, i);
-            }else if(table_clients.getValueAt(i, 6).equals(zone_recherche)) {
-                table_clients.setRowSelectionInterval(i, i);
-            }else if(table_clients.getValueAt(i, 7).equals(zone_recherche)) {
-                table_clients.setRowSelectionInterval(i, i);
-            }
-        }
-         */
     }//GEN-LAST:event_btn_rechercherActionPerformed
 
     private void txt_rechercherKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rechercherKeyReleased
