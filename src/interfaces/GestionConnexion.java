@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package interfaces;
 
@@ -10,16 +9,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author SystellCOM
  */
 public class GestionConnexion extends javax.swing.JFrame {
-    //Déclaration des objets Statement et Connxion
+//Déclaration des objets Statement et Connxion
     Statement stm;
     Connexion maconnexion = new Connexion();
-
     /**
      * Creates new form GestionConnexion
      */
@@ -40,46 +37,68 @@ public class GestionConnexion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        txt_user = new composants.TextField();
         jLabel3 = new javax.swing.JLabel();
-        txt_user = new javax.swing.JTextField();
-        btn_annuler = new javax.swing.JButton();
-        btn_connecter = new javax.swing.JButton();
-        txt_password = new javax.swing.JPasswordField();
-        btn_quitter = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        txt_password = new composants.PasswordField();
+        btn_connecter = new composants.MyButton();
+        txt_annuler = new composants.MyButton();
+        txt_quitter = new composants.MyButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ECOLE SUPERIEURE DE GESTION ET D'ADMINISTRATION DES ENTREPRISES");
-        setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(760, 425));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(246, 246, 246));
 
-        jLabel1.setText("DEVOIR DE RECHERCHE");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Sans titre.png"))); // NOI18N
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Authentification"));
+        jPanel2.setBackground(new java.awt.Color(246, 246, 246));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Authentification", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poppins", 1, 22), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        jLabel2.setText("Utilisateur : ");
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 17)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Mot de passe :");
 
-        jLabel3.setText("Mot de passe : ");
+        txt_user.setBackground(new java.awt.Color(246, 246, 246));
+        txt_user.setForeground(new java.awt.Color(0, 0, 0));
+        txt_user.setFont(new java.awt.Font("Poppins", 0, 17)); // NOI18N
+        txt_user.setLabelText("");
+        txt_user.setLineColor(new java.awt.Color(10, 178, 255));
 
-        txt_user.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_userActionPerformed(evt);
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 17)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Utilisateur :");
 
-        btn_annuler.setText("Annuler");
-        btn_annuler.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_annulerActionPerformed(evt);
-            }
-        });
+        txt_password.setBackground(new java.awt.Color(246, 246, 246));
+        txt_password.setForeground(new java.awt.Color(0, 0, 0));
+        txt_password.setLabelText("");
+        txt_password.setLineColor(new java.awt.Color(10, 178, 255));
 
+        btn_connecter.setForeground(new java.awt.Color(255, 255, 255));
+        btn_connecter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_lock_25px_1.png"))); // NOI18N
         btn_connecter.setText("Connecter");
+        btn_connecter.setBorderColor(new java.awt.Color(10, 178, 255));
+        btn_connecter.setBorderPainted(false);
+        btn_connecter.setColor(new java.awt.Color(10, 178, 255));
+        btn_connecter.setColorClick(new java.awt.Color(10, 68, 255));
+        btn_connecter.setColorOver(new java.awt.Color(10, 107, 255));
+        btn_connecter.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        btn_connecter.setRadius(5);
         btn_connecter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_connecterActionPerformed(evt);
+            }
+        });
+
+        txt_annuler.setForeground(new java.awt.Color(10, 178, 255));
+        txt_annuler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_reset_25px_1.png"))); // NOI18N
+        txt_annuler.setText("Annuler");
+        txt_annuler.setBorderColor(new java.awt.Color(10, 178, 255));
+        txt_annuler.setColorClick(new java.awt.Color(255, 255, 255));
+        txt_annuler.setColorOver(new java.awt.Color(246, 246, 246));
+        txt_annuler.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txt_annuler.setRadius(5);
+        txt_annuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_annulerActionPerformed(evt);
             }
         });
 
@@ -88,87 +107,86 @@ public class GestionConnexion extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btn_connecter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(btn_annuler)
-                        .addGap(47, 47, 47))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_user)
-                            .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btn_connecter, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addComponent(txt_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
                     .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_connecter)
-                    .addComponent(btn_annuler))
-                .addContainerGap())
+                    .addComponent(btn_connecter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
         );
 
-        btn_quitter.setText("Quitter");
-        btn_quitter.addActionListener(new java.awt.event.ActionListener() {
+        txt_quitter.setForeground(new java.awt.Color(255, 255, 255));
+        txt_quitter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_logout_25px.png"))); // NOI18N
+        txt_quitter.setText("Quitter");
+        txt_quitter.setBorderColor(new java.awt.Color(255, 95, 87));
+        txt_quitter.setColor(new java.awt.Color(255, 95, 87));
+        txt_quitter.setColorClick(new java.awt.Color(255, 69, 66));
+        txt_quitter.setColorOver(new java.awt.Color(255, 68, 86));
+        txt_quitter.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txt_quitter.setIconTextGap(0);
+        txt_quitter.setRadius(5);
+        txt_quitter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_quitterActionPerformed(evt);
+                txt_quitterActionPerformed(evt);
             }
         });
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\SystellCOM\\Downloads\\Sans titre.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addComponent(jLabel1)
-                .addContainerGap(809, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(272, 272, 272))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_quitter)
-                        .addGap(407, 407, 407))))
+                .addComponent(txt_quitter, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(150, 150, 150))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jLabel4))
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addComponent(btn_quitter)
-                .addContainerGap(126, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addComponent(txt_quitter, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,22 +207,10 @@ public class GestionConnexion extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitterActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btn_quitterActionPerformed
-
-    private void btn_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_annulerActionPerformed
-        //Vide les champs lorsqu'on appui sur annuler
-        txt_user.setText("");
-        txt_password.setText("");
-    }//GEN-LAST:event_btn_annulerActionPerformed
 
     private void btn_connecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_connecterActionPerformed
         // TODO add your handling code here:
-        
           try {
         String username = txt_user.getText();
         String password = txt_password.getText();
@@ -226,13 +232,17 @@ public class GestionConnexion extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
-        
     }//GEN-LAST:event_btn_connecterActionPerformed
 
-    private void txt_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_userActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_userActionPerformed
+    private void txt_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_annulerActionPerformed
+           //Vide les champs lorsqu'on appui sur annuler
+        txt_user.setText("");
+        txt_password.setText("");
+    }//GEN-LAST:event_txt_annulerActionPerformed
+
+    private void txt_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quitterActionPerformed
+  System.exit(0);        
+    }//GEN-LAST:event_txt_quitterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,16 +280,15 @@ public class GestionConnexion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_annuler;
-    private javax.swing.JButton btn_connecter;
-    private javax.swing.JButton btn_quitter;
+    private composants.MyButton btn_connecter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField txt_password;
-    private javax.swing.JTextField txt_user;
+    private composants.MyButton txt_annuler;
+    private composants.PasswordField txt_password;
+    private composants.MyButton txt_quitter;
+    private composants.TextField txt_user;
     // End of variables declaration//GEN-END:variables
 }

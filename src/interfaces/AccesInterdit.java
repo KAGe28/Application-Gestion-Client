@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package interfaces;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,6 +33,7 @@ public class AccesInterdit extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btn_retour_dashboard = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        myButton1 = new composants.MyButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +47,20 @@ public class AccesInterdit extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Open Sans", 0, 24)); // NOI18N
         jLabel1.setText("Désolé vous n'avez pas accès à cette interface");
 
+        myButton1.setForeground(new java.awt.Color(255, 255, 255));
+        myButton1.setText("Retour");
+        myButton1.setBorderColor(new java.awt.Color(255, 255, 255));
+        myButton1.setColor(new java.awt.Color(0, 102, 255));
+        myButton1.setColorClick(new java.awt.Color(0, 102, 204));
+        myButton1.setColorOver(new java.awt.Color(0, 102, 204));
+        myButton1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        myButton1.setRadius(10);
+        myButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -50,6 +68,8 @@ public class AccesInterdit extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(btn_retour_dashboard)
+                .addGap(18, 18, 18)
+                .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(124, Short.MAX_VALUE)
@@ -59,10 +79,12 @@ public class AccesInterdit extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
+                .addContainerGap(145, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(115, 115, 115)
-                .addComponent(btn_retour_dashboard)
+                .addGap(108, 108, 108)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_retour_dashboard)
+                    .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -92,6 +114,11 @@ public class AccesInterdit extends javax.swing.JFrame {
         new GestionTableauxBord().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_retour_dashboardActionPerformed
+
+    private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
+        // TODO add your handling code here:
+         JOptionPane.showMessageDialog(null, "Veuillez entrer tous les champs s'il vous plaît");
+    }//GEN-LAST:event_myButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,5 +159,6 @@ public class AccesInterdit extends javax.swing.JFrame {
     private javax.swing.JButton btn_retour_dashboard;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private composants.MyButton myButton1;
     // End of variables declaration//GEN-END:variables
 }

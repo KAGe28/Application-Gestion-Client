@@ -353,7 +353,6 @@ public class GestionClients extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table_clients.setRowHeight(20);
         jScrollPane1.setViewportView(table_clients);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -406,10 +405,11 @@ public class GestionClients extends javax.swing.JFrame {
                             .addComponent(txt_rechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_rechercher))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_supprimer)
-                            .addComponent(btn_modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_ajouter))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_modifier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btn_supprimer)
+                                .addComponent(btn_ajouter)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_afficher)
@@ -498,7 +498,7 @@ public class GestionClients extends javax.swing.JFrame {
     private void btn_supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_supprimerActionPerformed
         // Bouton permettant de suppimer un client selectionné dans le tableau
         
-        // On 
+        // On donne comme référence le client de la ligne sélectionné
         int index = table_clients.getSelectedRow();
         try {
             if (JOptionPane.showConfirmDialog(null, "attention vous avez supprimer un client etes-vous sûr?", "Suppimer client",
@@ -521,14 +521,23 @@ public class GestionClients extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_supprimerActionPerformed
 
     private void btn_afficherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_afficherActionPerformed
+        /*
+        * Bouton permettant d'afficher les informations du client de la ligne selectionnée
+        * dans les champs de saisie pour procéder à une modification
+        */
         fichierVersEcran();
+        
+        /*
+        Une condition interdisant de cliquer sur le bouton ajouter après avoir affiché
+        les informations d'un client dans les champs de saisie
+        */
         if (!txt_nom.getText().equals("")
                 || !txt_prenom.getText().equals("")
                 || !txt_adresse.getText().equals("")
                 || !txt_email.getText().equals("")
                 || !txt_telephone.getText().equals("")
                 || !txt_fonction.getText().equals("")) {
-            btn_ajouter.setEnabled(false);
+            btn_ajouter.setEnabled(false); //Désactive le bouton ajouter
         }
         
 
@@ -536,10 +545,11 @@ public class GestionClients extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_afficherActionPerformed
 
     private void btn_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_annulerActionPerformed
-        // TODO add your handling code here:
+        // Bouton permettant de réinitialiser les champs de saisie
         if (JOptionPane.showConfirmDialog(null, "Voulez-vous annuler et vider les champs?", "Annuler et vider les champs",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
             if (true) {
+                //vider les champs  après avoir appuyé sur oui
                 viderChamps();
                 btn_ajouter.setEnabled(true);
             }
@@ -548,9 +558,11 @@ public class GestionClients extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_annulerActionPerformed
 
     private void btn_modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifierActionPerformed
-        // TODO add your handling code here:
-        //Modifier les informations afficher
-
+        // Bouton permettant de modifier les informations du client
+        
+        /* La modification d'un client ne se fait qu'àprès avoir affiché ses informations
+        *  dans les champs de saisie
+        */
         int index = table_clients.getSelectedRow();
         try {
             if (txt_nom.getText().equals("")
@@ -559,7 +571,7 @@ public class GestionClients extends javax.swing.JFrame {
                     || txt_email.getText().equals("")
                     || txt_telephone.getText().equals("")
                     || txt_fonction.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Aucun client n'a été affiché pour procéder à la modifiaction");
+                JOptionPane.showMessageDialog(null, "Veuillez renseigner tous les champs s'il vous plaît");
             } else {
                 btn_ajouter.setEnabled(false);
                 if (JOptionPane.showConfirmDialog(null, "Confirmer la modification", "Modification",
@@ -582,12 +594,18 @@ public class GestionClients extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_modifierActionPerformed
 
     private void btn_rechercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rechercherActionPerformed
-        // TODO add your handling code here:
-        //Rechercher par nom
+        // Bouton permettant de rechercher un client dans le tableau contenant les clients
         String zone_recherche = txt_rechercher.getText();
         rechercher(zone_recherche);
     }//GEN-LAST:event_btn_rechercherActionPerformed
 
+    
+    
+    
+    
+    
+    
+    
     private void txt_rechercherKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rechercherKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_rechercherKeyReleased

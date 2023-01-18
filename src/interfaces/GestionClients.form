@@ -113,10 +113,12 @@
                               <Component id="btn_rechercher" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btn_supprimer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btn_modifier" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="btn_ajouter" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btn_supprimer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_ajouter" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -517,7 +519,6 @@
                     <Column editable="true" title="FONCTION" type="java.lang.String"/>
                   </Table>
                 </Property>
-                <Property name="rowHeight" type="int" value="20"/>
               </Properties>
             </Component>
           </SubComponents>
