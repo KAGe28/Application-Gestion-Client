@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/composants/TextFieldSuggestion.java</file>
             <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/interfaces/GestionConnexion.java</file>
             <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/interfaces/GestionClients.java</file>
+            <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/composants/PasswordField.java</file>
+            <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/composants/TextField.java</file>
+            <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/composants/TextFieldSuggestionUI.java</file>
+            <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/classes/Connexion.java</file>
             <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/interfaces/AccesInterdit.java</file>
+            <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/composants/ScrollBarCustom.java</file>
             <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/interfaces/GestionTableauxBord.java</file>
-            <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/composants/MyButton.java</file>
+            <file>file:/C:/Users/SystellCOM/Documents/NetBeansProjects/GestionDR1/src/composants/ModernScrollBarUI.java</file>
         </group>
     </open-files>
 </project-private>

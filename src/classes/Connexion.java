@@ -13,8 +13,8 @@ import java.sql.*;
  */
 public class Connexion {
      //chemin de pilote
-    String urlpilote="com.mysql.jdbc.Driver";
-    String urlbaseDonnes="jdbc:mysql://localhost:3306/gestiondr1";
+    String urlpilote="com.mysql.cj.jdbc.Driver";
+    String urlbaseDonnes="jdbc:mysql://localhost:3306/gestiondr1?serverTimezone=UTC";
     Connection conn;
     
     public  Connexion(){

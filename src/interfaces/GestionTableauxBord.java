@@ -34,9 +34,10 @@ public class GestionTableauxBord extends javax.swing.JFrame {
         btn_gest_clients = new javax.swing.JButton();
         btn_gest_produits = new javax.swing.JButton();
         btn_gest_factures = new javax.swing.JButton();
+        myButton1 = new composants.MyButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(760, 425));
+        setPreferredSize(new java.awt.Dimension(1130, 562));
 
         btn_retour_connexion.setText("Retour");
         btn_retour_connexion.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +77,13 @@ public class GestionTableauxBord extends javax.swing.JFrame {
             }
         });
 
+        myButton1.setText("Comptes de connexion");
+        myButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,17 +93,18 @@ public class GestionTableauxBord extends javax.swing.JFrame {
                 .addComponent(btn_retour_connexion)
                 .addContainerGap(658, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 300, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_gest_devis, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_gest_factures, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_gest_produits, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_gest_clients, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(278, 278, 278))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(247, 247, 247))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 300, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_gest_devis, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(btn_gest_factures, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(btn_gest_produits, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(btn_gest_clients, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(myButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(278, 278, 278))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +119,9 @@ public class GestionTableauxBord extends javax.swing.JFrame {
                 .addComponent(btn_gest_factures)
                 .addGap(18, 18, 18)
                 .addComponent(btn_gest_devis)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(btn_retour_connexion)
                 .addContainerGap())
         );
@@ -172,6 +183,12 @@ public class GestionTableauxBord extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_gest_devisActionPerformed
 
+    private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
+        // TODO add your handling code here:
+        new GestionComptes().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_myButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -215,5 +232,6 @@ public class GestionTableauxBord extends javax.swing.JFrame {
     private javax.swing.JButton btn_retour_connexion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private composants.MyButton myButton1;
     // End of variables declaration//GEN-END:variables
 }

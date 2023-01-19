@@ -41,14 +41,17 @@ public class GestionConnexion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txt_password = new composants.PasswordField();
         btn_connecter = new composants.MyButton();
-        txt_annuler = new composants.MyButton();
-        txt_quitter = new composants.MyButton();
+        btn_annuler = new composants.MyButton();
+        btn_quitter = new composants.MyButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ECOLE SUPERIEURE DE GESTION ET D'ADMINISTRATION DES ENTREPRISES");
+        setBackground(new java.awt.Color(246, 246, 246));
+        setPreferredSize(new java.awt.Dimension(1130, 562));
 
         jPanel1.setBackground(new java.awt.Color(246, 246, 246));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Sans titre.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/User-ICO.png"))); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(246, 246, 246));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Authentification", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poppins", 1, 22), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -71,6 +74,7 @@ public class GestionConnexion extends javax.swing.JFrame {
         txt_password.setForeground(new java.awt.Color(0, 0, 0));
         txt_password.setLabelText("");
         txt_password.setLineColor(new java.awt.Color(10, 178, 255));
+        txt_password.setShowAndHide(true);
 
         btn_connecter.setForeground(new java.awt.Color(255, 255, 255));
         btn_connecter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_lock_25px_1.png"))); // NOI18N
@@ -88,17 +92,17 @@ public class GestionConnexion extends javax.swing.JFrame {
             }
         });
 
-        txt_annuler.setForeground(new java.awt.Color(10, 178, 255));
-        txt_annuler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_reset_25px_1.png"))); // NOI18N
-        txt_annuler.setText("Annuler");
-        txt_annuler.setBorderColor(new java.awt.Color(10, 178, 255));
-        txt_annuler.setColorClick(new java.awt.Color(255, 255, 255));
-        txt_annuler.setColorOver(new java.awt.Color(246, 246, 246));
-        txt_annuler.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txt_annuler.setRadius(5);
-        txt_annuler.addActionListener(new java.awt.event.ActionListener() {
+        btn_annuler.setForeground(new java.awt.Color(10, 178, 255));
+        btn_annuler.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_reset_25px_1.png"))); // NOI18N
+        btn_annuler.setText("Annuler");
+        btn_annuler.setBorderColor(new java.awt.Color(10, 178, 255));
+        btn_annuler.setColorClick(new java.awt.Color(255, 255, 255));
+        btn_annuler.setColorOver(new java.awt.Color(246, 246, 246));
+        btn_annuler.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        btn_annuler.setRadius(5);
+        btn_annuler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_annulerActionPerformed(evt);
+                btn_annulerActionPerformed(evt);
             }
         });
 
@@ -120,7 +124,7 @@ public class GestionConnexion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_connecter, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                        .addComponent(txt_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)))
                 .addContainerGap())
         );
@@ -138,23 +142,23 @@ public class GestionConnexion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_connecter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
 
-        txt_quitter.setForeground(new java.awt.Color(255, 255, 255));
-        txt_quitter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_logout_25px.png"))); // NOI18N
-        txt_quitter.setText("Quitter");
-        txt_quitter.setBorderColor(new java.awt.Color(255, 95, 87));
-        txt_quitter.setColor(new java.awt.Color(255, 95, 87));
-        txt_quitter.setColorClick(new java.awt.Color(255, 69, 66));
-        txt_quitter.setColorOver(new java.awt.Color(255, 68, 86));
-        txt_quitter.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txt_quitter.setIconTextGap(0);
-        txt_quitter.setRadius(5);
-        txt_quitter.addActionListener(new java.awt.event.ActionListener() {
+        btn_quitter.setForeground(new java.awt.Color(255, 255, 255));
+        btn_quitter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8_logout_25px.png"))); // NOI18N
+        btn_quitter.setText("Quitter");
+        btn_quitter.setBorderColor(new java.awt.Color(255, 95, 87));
+        btn_quitter.setColor(new java.awt.Color(255, 95, 87));
+        btn_quitter.setColorClick(new java.awt.Color(255, 69, 66));
+        btn_quitter.setColorOver(new java.awt.Color(255, 68, 86));
+        btn_quitter.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        btn_quitter.setIconTextGap(0);
+        btn_quitter.setRadius(5);
+        btn_quitter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_quitterActionPerformed(evt);
+                btn_quitterActionPerformed(evt);
             }
         });
 
@@ -163,14 +167,14 @@ public class GestionConnexion extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_quitter, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_quitter, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(150, 150, 150))
         );
         jPanel1Layout.setVerticalGroup(
@@ -178,14 +182,13 @@ public class GestionConnexion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(txt_quitter, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(btn_quitter, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -193,20 +196,21 @@ public class GestionConnexion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_connecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_connecterActionPerformed
@@ -234,15 +238,15 @@ public class GestionConnexion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_connecterActionPerformed
 
-    private void txt_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_annulerActionPerformed
+    private void btn_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_annulerActionPerformed
            //Vide les champs lorsqu'on appui sur annuler
         txt_user.setText("");
         txt_password.setText("");
-    }//GEN-LAST:event_txt_annulerActionPerformed
+    }//GEN-LAST:event_btn_annulerActionPerformed
 
-    private void txt_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quitterActionPerformed
+    private void btn_quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_quitterActionPerformed
   System.exit(0);        
-    }//GEN-LAST:event_txt_quitterActionPerformed
+    }//GEN-LAST:event_btn_quitterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,15 +284,15 @@ public class GestionConnexion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private composants.MyButton btn_annuler;
     private composants.MyButton btn_connecter;
+    private composants.MyButton btn_quitter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private composants.MyButton txt_annuler;
     private composants.PasswordField txt_password;
-    private composants.MyButton txt_quitter;
     private composants.TextField txt_user;
     // End of variables declaration//GEN-END:variables
 }
